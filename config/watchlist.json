@@ -1,0 +1,5 @@
+{
+  "_說明": "觀察清單:要每日追蹤分析的美股代號。直接編輯 tickers 陣列即可,下次執行自動生效。",
+  "tickers": ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA", "SPY", "QQQ"],
+  "benchmark": "SPY"
+}

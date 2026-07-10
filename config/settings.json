@@ -1,0 +1,39 @@
+{
+  "_說明": "系統參數。risk=風險控管, thresholds=建議觸發門檻(分數 -100~+100), indicators=技術指標參數。",
+  "risk": {
+    "max_position_weight": 0.15,
+    "stop_loss_pct": -0.08,
+    "take_profit_review_pct": 0.25,
+    "min_cash_reserve_pct": 0.1,
+    "default_new_position_weight": 0.08
+  },
+  "thresholds": {
+    "buy_score": 40,
+    "add_score": 55,
+    "sell_score": -40,
+    "trim_rsi": 75
+  },
+  "indicators": {
+    "rsi_period": 14,
+    "sma_fast": 20,
+    "sma_mid": 50,
+    "sma_slow": 200,
+    "macd_fast": 12,
+    "macd_slow": 26,
+    "macd_signal": 9,
+    "bb_period": 20,
+    "bb_std": 2,
+    "volume_avg_days": 20,
+    "history_days": 430,
+    "chart_days": 130
+  },
+  "news": {
+    "enabled": true,
+    "max_headlines_per_ticker": 6
+  },
+  "discovery": {
+    "enabled": true,
+    "max_candidates": 6,
+    "min_price": 5.0
+  }
+}

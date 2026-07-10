@@ -1,0 +1,9 @@
+{
+  "_說明": "你的實際持倉。positions 每筆包含 ticker(代號)、shares(股數)、avg_cost(每股平均成本,美元)。cash 為帳上現金(美元)。系統只做建議、不會下單;你確認執行後,把成交結果更新到這裡(或告訴 Claude 幫你改)。",
+  "_示範": true,
+  "cash": 8000,
+  "positions": [
+    { "ticker": "AAPL", "shares": 10, "avg_cost": 195.0 },
+    { "ticker": "NVDA", "shares": 8, "avg_cost": 135.0 }
+  ]
+}

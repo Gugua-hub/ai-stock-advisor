@@ -1,0 +1,43 @@
+name: 每日投資研究
+
+on:
+  schedule:
+    # 21:35 UTC = 美股收盤後(台北時間隔天早上 05:35),週一~週五(UTC)
+    - cron: "35 21 * * 1-5"
+  workflow_dispatch: {}   # 也可以隨時在 Actions 頁面手動觸發
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-analysis
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 安裝相依套件
+        run: pip install -r requirements.txt
+
+      - name: 執行每日研究(研究→建議→日誌→儀表板)
+        run: python run.py
+
+      - name: 提交結果(日誌 + 儀表板 + 快照)
+        run: |
+          git config user.name "advisor-bot"
+          git config user.email "advisor-bot@users.noreply.github.com"
+          git add journal/ output/ docs/
+          git diff --cached --quiet && echo "沒有變更" && exit 0
+          git commit -m "每日分析 $(date -u +%F)"
+          git push
